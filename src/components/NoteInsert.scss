@@ -1,0 +1,38 @@
+.NoteInsert {
+  display: flex;
+  background: #495057;
+  border-bottom: 1px solid #102c57;
+
+  input {
+    outline: none;
+    border: none;
+    padding: 0.2rem;
+    // background: #f8f0e5;
+    // font-size: 1rem;
+    line-height: 1.5;
+    color: darkslategrey;
+    &::placeholder {
+      color: darkslategrey;
+    }
+    // 버튼 제외 영역 모두 차지
+    flex: 1;
+  }
+
+  button {
+    // 기본 스타일 초기화
+    background: none;
+    outline: none;
+    border: none;
+    background: #868e96;
+    color: white;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.1s background ease-in;
+    &:hover {
+      background: #dac0a3;
+    }
+  }
+}

@@ -1,0 +1,63 @@
+.NoteListItem {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  // border-top: 1px solid #102c57;
+  // &:nth-child(even) {
+  //   background: #f8f9fa;
+  // }
+
+  .checkbox {
+    cursor: pointer;
+    flex: 1;
+    display: flex;
+    align-items: center;
+
+    svg {
+      font-size: 1.2rem;
+    }
+    .sentence {
+      margin-left: 0.5rem;
+      flex: 1;
+    }
+    .reference {
+      font-size: 0.8rem;
+      margin-right: 0.2rem;
+    }
+    .url {
+      margin-left: 0.2rem;
+      font-size: 0.9rem;
+    }
+
+    // styling when it is checked
+    &.checked {
+      svg {
+        color: #102c57;
+      }
+      .sentence span {
+        // color: #adb5bd;
+        background-color: burlywood;
+      }
+
+      .sentenceVariety textarea {
+        outline-color: burlywood;
+      }
+    }
+  }
+
+  .remove {
+    display: flex;
+    align-items: center;
+    // font-size: 1.2rem;
+    color: #adb5bd;
+    cursor: pointer;
+    &:hover {
+      color: #ff6b6b;
+    }
+  }
+
+  // 엘리먼트 사이사이 테두리 넣기
+  & + & {
+    border-top: 1px solid #dee2e6;
+  }
+}

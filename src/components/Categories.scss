@@ -1,0 +1,24 @@
+.CategoriesBlock {
+  display: flex;
+  padding: 1rem;
+  // width: 768px;
+  margin: 0 auto;
+  border-bottom: 1px solid #102c57;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .Category {
+    font-size: 1.125rem;
+    cursor: pointer;
+    white-space: pre;
+    text-decoration: none;
+    color: inherit;
+    padding-left: 1rem;
+
+    &:hover {
+      color: white;
+    }
+  }
+}
