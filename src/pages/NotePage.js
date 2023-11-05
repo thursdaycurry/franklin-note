@@ -15,6 +15,7 @@ const NotePage = () => {
       reference: 'Leo Tolstoy, Anna Karenina',
       url: 'https://www.goodreads.com/work/quotes/3252320-the-call-of-the-wild',
       checked: false,
+      comments: '',
     },
     {
       id: 2,
@@ -23,6 +24,7 @@ const NotePage = () => {
       reference: '- George Orwell, 1984',
       url: 'https://www.goodreads.com/work/quotes/3252320-the-call-of-the-wild',
       checked: false,
+      comments: '',
     },
     {
       id: 3,
@@ -30,6 +32,7 @@ const NotePage = () => {
       reference: 'Paul graham',
       url: 'http://www.paulgraham.com',
       checked: false,
+      comments: '',
     },
   ]);
 
@@ -39,12 +42,19 @@ const NotePage = () => {
   const onInsert = useCallback(
     (data) => {
       const { sentence, reference, url } = data;
+
+      if (sentence.trim().length === 0) {
+        alert('Please input something in sentence');
+        return;
+      }
+
       const note = {
         id: nextId.current,
         sentence,
         reference,
         url,
         checked: false,
+        comments: '',
       };
       setNotes(notes.concat(note));
       nextId.current += 1; // add nextId +1
@@ -70,13 +80,27 @@ const NotePage = () => {
     [notes],
   );
 
+  const onChange = useCallback((id, value) => {
+    setNotes(
+      notes.map((note) =>
+        note.id === id ? { ...note, comments: value } : note,
+      ),
+    );
+    console.log(notes);
+  });
+
   // Testing for Note List V2
 
   return (
     <>
       <FranklinTemplate>
         <NoteInsert onInsert={onInsert} />
-        <NoteList notes={notes} onRemove={onRemove} onToggle={onToggle} />
+        <NoteList
+          notes={notes}
+          onRemove={onRemove}
+          onToggle={onToggle}
+          onChange={onChange}
+        />
         {/* <NoteListV2 /> */}
         <NoteSender notes={notes} />
       </FranklinTemplate>

@@ -7,8 +7,12 @@ import {
 import cn from 'classnames';
 import './NoteListItem.scss';
 
-const NoteListItem = ({ note, onRemove, onToggle }) => {
+const NoteListItem = ({ note, onRemove, onToggle, onChange }) => {
   const { id, sentence, reference, url, checked } = note;
+
+  const handleChange = (e) => {
+    onChange(id, e.target.value);
+  };
 
   return (
     <div>
@@ -26,7 +30,12 @@ const NoteListItem = ({ note, onRemove, onToggle }) => {
             </div>
             <div className="sentenceVariety">
               {checked ? (
-                <textarea name="sentenceVarietyNoteArea" rows="4" cols="50" />
+                <textarea
+                  name="sentenceVarietyNoteArea"
+                  rows="4"
+                  cols="50"
+                  onChange={handleChange}
+                />
               ) : (
                 ''
               )}

@@ -1,7 +1,7 @@
 import NoteListItem from './NoteListItem';
 import './NoteList.scss';
 
-const NoteList = ({ notes, onRemove, onToggle }) => {
+const NoteList = ({ notes, onRemove, onToggle, onChange }) => {
   return (
     <div className="NoteList">
       {notes.map((note) => (
@@ -10,6 +10,7 @@ const NoteList = ({ notes, onRemove, onToggle }) => {
           key={note.id}
           onRemove={onRemove}
           onToggle={onToggle}
+          onChange={onChange}
         />
       ))}
     </div>
