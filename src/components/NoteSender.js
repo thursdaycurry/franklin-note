@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-const NoteSender = (notes) => {
+const NoteSender = ({ notes }) => {
   const [emailAddress, setEmailAddress] = useState('');
 
   const onChangeEmailAddress = useCallback((e) => {
@@ -8,12 +8,57 @@ const NoteSender = (notes) => {
   }, []);
 
   const onHandleSendEmail = () => {
+    let mailBodySentence = ``;
+
+    notes.map((note) => {
+      const { id, sentence, reference, url, comments } = note;
+
+      if (comments && comments.length > 0) {
+        const textToAdd = `${id}. '${sentence}'\n${comments
+          .split('\n')
+          .map((comment) => `\t👉 ${comment}\n`)}
+        ${reference ? `ref: ${reference}` : ''}
+        ${url ? `url: ${url}` : ''}
+      `.replaceAll(',', '');
+        mailBodySentence += `${textToAdd}\n`;
+      } else {
+        const textToAdd = `${id}. '${sentence}'\n
+      ${reference ? `ref: ${reference}` : ''}
+      ${url ? `url: ${url}` : ''}\n`;
+        mailBodySentence += `${textToAdd}\n`;
+      }
+    });
+
+    const currentTime = new Date().toISOString().split('T')[0];
+
+    const mailBody = `+---- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----+\n
+\t     /-/ |
+\t    /_/ |
+\t   |  | /|
+\t   |^|  |
+\t   |_| /
+
+<Franlin Note> on ${currentTime}
+
+
+${mailBodySentence}\n
+----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+Thank you for choosing our service.
+
+'Improve English Naturally with Franklin Note'
+
+Developed by thursdaycurry@gmail.com
+
++---- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----+
+
+    `;
+
     const mailtoLink = `mailto:${encodeURIComponent(
       emailAddress,
     )}?subject=${encodeURIComponent(
-      `your Franklin Note on ${new Date().toISOString().split('T')[0]}`,
-    )}&body=${encodeURIComponent('Body text')}`;
-
+      `your Franklin Note on ${currentTime}`,
+    )}&body=${encodeURIComponent(mailBody)}`;
     window.location.href = mailtoLink;
   };
 

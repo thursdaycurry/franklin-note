@@ -4,7 +4,6 @@ import FranklinTemplate from '../components/FranklinTemplate';
 import NoteInsert from '../components/NoteInsert';
 import NoteList from '../components/NoteList';
 import NoteSender from '../components/NoteSender';
-import NoteListV2 from '../components/NoteListV2';
 
 const NotePage = () => {
   const [notes, setNotes] = useState([
@@ -21,7 +20,7 @@ const NotePage = () => {
       id: 2,
       sentence:
         'It was a bright cold day in April, and the clocks were striking thirteen.',
-      reference: '- George Orwell, 1984',
+      reference: 'George Orwell, 1984',
       url: 'https://www.goodreads.com/work/quotes/3252320-the-call-of-the-wild',
       checked: false,
       comments: '',
@@ -80,14 +79,16 @@ const NotePage = () => {
     [notes],
   );
 
-  const onChange = useCallback((id, value) => {
-    setNotes(
-      notes.map((note) =>
-        note.id === id ? { ...note, comments: value } : note,
-      ),
-    );
-    console.log(notes);
-  });
+  const onChange = useCallback(
+    (id, value) => {
+      setNotes(
+        notes.map((note) =>
+          note.id === id ? { ...note, comments: value } : note,
+        ),
+      );
+    },
+    [notes],
+  );
 
   // Testing for Note List V2
 
