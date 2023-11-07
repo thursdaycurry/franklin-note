@@ -31,7 +31,7 @@ const NoteSender = ({ notes }) => {
 
     const currentTime = new Date().toISOString().split('T')[0];
 
-    const mailBody = `+---- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----+\n
+    const mailBody = `+---- ----- ----- ----- ----- ----- ----- ----+\n
 \t     /-/ |
 \t    /_/ |
 \t   |  | /|
@@ -42,7 +42,7 @@ const NoteSender = ({ notes }) => {
 
 
 ${mailBodySentence}\n
------ ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+----- ----- ----- ----- ----- ----- ----- -----
 
 Thank you for choosing our service.
 
@@ -50,7 +50,7 @@ Thank you for choosing our service.
 
 Developed by thursdaycurry@gmail.com
 
-+---- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----+
++---- ----- ----- ----- ----- ----- ----- ----+
 
     `;
 

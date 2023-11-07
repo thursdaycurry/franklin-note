@@ -4,6 +4,7 @@ import FranklinTemplate from '../components/FranklinTemplate';
 import NoteInsert from '../components/NoteInsert';
 import NoteList from '../components/NoteList';
 import NoteSender from '../components/NoteSender';
+import TestSpeak from '../components/TestSpeak';
 
 const NotePage = () => {
   const [notes, setNotes] = useState([
@@ -104,6 +105,7 @@ const NotePage = () => {
         />
         {/* <NoteListV2 /> */}
         <NoteSender notes={notes} />
+        <TestSpeak />
       </FranklinTemplate>
     </>
   );
