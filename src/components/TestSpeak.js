@@ -18,7 +18,7 @@ const TestSpeak = () => {
         onChange={(e) => setText(e.target.value)}
         placeholder="Enter text to speak"
         rows="4"
-        cols="50"
+        cols="30"
       />
       <button onClick={handleSpeak}>Speak</button>
     </div>
