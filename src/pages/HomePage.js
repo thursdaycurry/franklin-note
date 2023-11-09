@@ -35,7 +35,7 @@ const HomePage = () => {
 
       {/* CTA */}
 
-      <section class="bg-gray-50">
+      {/* <section class="bg-gray-50">
         <div class="p-8 md:p-12 lg:px-16 lg:py-24">
           <div class="mx-auto max-w-lg text-center">
             <h2 class="text-2xl font-bold text-gray-900 md:text-3xl">
@@ -87,7 +87,7 @@ const HomePage = () => {
             </form>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Unique selling Proposition */}
       <section class="bg-blue-500 text-white p-8">
