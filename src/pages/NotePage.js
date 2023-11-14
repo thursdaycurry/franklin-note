@@ -104,9 +104,9 @@ const NotePage = () => {
           onChange={onChange}
         />
         {/* <NoteListV2 /> */}
-        <NoteSender notes={notes} />
-        <TestSpeak />
+        {/* <TestSpeak /> */}
       </FranklinTemplate>
+      <NoteSender notes={notes} />
     </>
   );
 };

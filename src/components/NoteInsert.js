@@ -4,33 +4,36 @@ import { useCallback, useState } from 'react';
 
 const NoteInsert = ({ onInsert }) => {
   const [sentence, setSentence] = useState('');
-  const [reference, setReference] = useState('');
-  const [url, setUrl] = useState('');
+  // const [reference, setReference] = useState('');
+  // const [url, setUrl] = useState('');
 
   const onChangeSentence = useCallback((e) => {
     setSentence(e.target.value);
   }, []);
 
-  const onChangeReference = useCallback((e) => {
-    setReference(e.target.value);
-  }, []);
+  // const onChangeReference = useCallback((e) => {
+  //   setReference(e.target.value);
+  // }, []);
 
-  const onChangeUrl = useCallback((e) => {
-    setUrl(e.target.value);
-  }, []);
+  // const onChangeUrl = useCallback((e) => {
+  //   setUrl(e.target.value);
+  // }, []);
 
   const onSubmit = useCallback(
     (e) => {
-      onInsert({ sentence, reference, url });
+      // onInsert({ sentence, reference, url });
+      onInsert({ sentence });
       // 초기화
       setSentence('');
-      setReference('');
-      setUrl('');
+      // setReference('');
+      // setUrl('');
 
       // submit 이벤트 새로고침 방지
       e.preventDefault();
     },
-    [onInsert, sentence, reference, url],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // [onInsert, sentence, reference, url],
+    [onInsert, sentence],
   );
 
   return (
@@ -40,12 +43,12 @@ const NoteInsert = ({ onInsert }) => {
         value={sentence}
         onChange={onChangeSentence}
       />
-      <input
+      {/* <input
         placeholder="reference.."
         value={reference}
         onChange={onChangeReference}
-      />
-      <input placeholder="url.." value={url} onChange={onChangeUrl} />
+      /> */}
+      {/* <input placeholder="url.." value={url} onChange={onChangeUrl} /> */}
       <button type="submit">
         <MdAdd />
       </button>

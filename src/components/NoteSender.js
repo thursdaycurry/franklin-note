@@ -79,7 +79,7 @@ Developed by thursdaycurry@gmail.com
       {/* New Forme */}
 
       <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-        <div class="mx-auto max-w-lg">
+        <div class="mx-auto max-w-lg ">
           {/* <h1 class="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">
             Get started today
           </h1>
@@ -91,9 +91,9 @@ Developed by thursdaycurry@gmail.com
 
           <form
             action=""
-            class="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
+            class="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8 bg-white"
           >
-            <p class="text-center text-lg font-normal">Send to your Email</p>
+            <p class="text-center text-lg font-normal">Collect to your mail</p>
 
             <div>
               <label for="email" class="sr-only">
@@ -169,7 +169,7 @@ Developed by thursdaycurry@gmail.com
 
             <button
               onClick={onHandleSendEmail}
-              class="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
+              class="block w-full rounded-lg bg-black px-5 py-3 text-sm font-medium text-white"
             >
               Send
             </button>
