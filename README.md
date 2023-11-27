@@ -2,7 +2,7 @@
 
 ![Franklin Note Logo]('./public/logo.png')
 
-![Franklin Note Logo](https://github.com/thursdaycurry/franklin-note/blob/main/public/logo.png?raw=true)
+![Franklin Note Logo](https://github.com/thursdaycurry/franklin-note/blob/main/public/images/logo.png)
 
 ## Introduction
 
