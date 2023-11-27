@@ -2,62 +2,75 @@ import { useCallback, useRef, useState } from 'react';
 
 import FranklinTemplate from '../components/FranklinTemplate';
 import NoteInsert from '../components/NoteInsert';
-import NoteList from '../components/NoteList';
 import NoteSender from '../components/NoteSender';
-import TestSpeak from '../components/TestSpeak';
+
+import uuid from 'react-uuid';
+import NoteListV2 from '../components/NoteListV2';
+import Modal from '../components/Modal';
 
 const NotePage = () => {
   const [notes, setNotes] = useState([
+    // TODO: get data from DB
     {
       id: 1,
-      sentence:
-        'All happy families are alike; each unhappy family is unhappy in its own way. ',
-      reference: 'Leo Tolstoy, Anna Karenina',
-      url: 'https://www.goodreads.com/work/quotes/3252320-the-call-of-the-wild',
-      checked: false,
-      comments: '',
+      sentence: 'She exercises every morning',
+      comments: [
+        {
+          commentId: uuid(),
+          postId: 1,
+
+          content: 'I read a book every night',
+        },
+        {
+          commentId: uuid(),
+          postId: 1,
+          content: 'He has breakfast every morning',
+        },
+      ],
     },
+
     {
       id: 2,
-      sentence:
-        'It was a bright cold day in April, and the clocks were striking thirteen.',
-      reference: 'George Orwell, 1984',
-      url: 'https://www.goodreads.com/work/quotes/3252320-the-call-of-the-wild',
-      checked: false,
-      comments: '',
-    },
-    {
-      id: 3,
-      sentence: 'Knowledge grows fractally',
-      reference: 'Paul graham',
-      url: 'http://www.paulgraham.com',
-      checked: false,
-      comments: '',
+      sentence: 'Knowledge grows fractally.',
+      comments: [],
     },
   ]);
 
-  // id as unique value by using ref
-  const nextId = useRef(4);
+  const nextId = useRef(3);
 
-  const onInsert = useCallback(
-    (data) => {
-      const { sentence, reference, url } = data;
+  const onInsert = useCallback(({ sentence }) => {
+    if (sentence.trim().length === 0) {
+      alert('Please input something in sentence');
+      return;
+    }
 
-      if (sentence.trim().length === 0) {
-        alert('Please input something in sentence');
-        return;
-      }
-
+    setNotes((prevNotes) => {
       const note = {
         id: nextId.current,
         sentence,
-        reference,
-        url,
-        checked: false,
-        comments: '',
+        comments: [],
       };
-      setNotes(notes.concat(note));
-      nextId.current += 1; // add nextId +1
+      nextId.current += 1; // increment nextId
+      return prevNotes.concat(note); // add the new note
+    });
+  }, []);
+
+  const onInsertComment = useCallback(
+    (id, content) => {
+      setNotes(
+        notes.map((note) =>
+          note.id === id
+            ? {
+                ...note,
+                comments: note.comments.concat({
+                  commentId: uuid(),
+                  postId: id,
+                  content,
+                }),
+              }
+            : note,
+        ),
+      );
     },
     [notes],
   );
@@ -69,42 +82,36 @@ const NotePage = () => {
     [notes],
   );
 
-  const onToggle = useCallback(
-    (id) => {
+  const onRemoveComment = useCallback(
+    (postId, commentId) =>
       setNotes(
         notes.map((note) =>
-          note.id === id ? { ...note, checked: !note.checked } : note,
+          note.id === postId
+            ? {
+                ...note,
+                comments: note.comments.filter(
+                  (comment) => comment.commentId !== commentId,
+                ),
+              }
+            : note,
         ),
-      );
-    },
+      ),
     [notes],
   );
 
-  const onChange = useCallback(
-    (id, value) => {
-      setNotes(
-        notes.map((note) =>
-          note.id === id ? { ...note, comments: value } : note,
-        ),
-      );
-    },
-    [notes],
-  );
-
-  // Testing for Note List V2
+  const [isModalOpen, setIsModalOpen] = useState(true);
 
   return (
     <>
+      {isModalOpen && <Modal setIsModalOpen={setIsModalOpen} />}
       <FranklinTemplate>
         <NoteInsert onInsert={onInsert} />
-        <NoteList
+        <NoteListV2
           notes={notes}
           onRemove={onRemove}
-          onToggle={onToggle}
-          onChange={onChange}
+          onInsertComment={onInsertComment}
+          onRemoveComment={onRemoveComment}
         />
-        {/* <NoteListV2 /> */}
-        {/* <TestSpeak /> */}
       </FranklinTemplate>
       <NoteSender notes={notes} />
     </>

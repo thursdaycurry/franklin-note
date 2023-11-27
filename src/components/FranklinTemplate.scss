@@ -1,12 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Charmonman:wght@400;700&display=swap');
+
 .FranklinTemplate {
   width: 512px;
-  // put on the center
   margin-left: auto;
   margin-right: auto;
   margin-top: 6rem;
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid black;
+  box-shadow: 2px 2px 20px 0 rgba(163, 177, 198, 0.6),
+    -2px -2px 16px 0 rgba(255, 255, 255, 0.7);
+
+  font-family: 'Charmonman', cursive;
 
   .app-title {
     background: black;
