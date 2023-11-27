@@ -1,5 +1,7 @@
 # Franklin Note
 
+![Franklin Note Logo]('./public/logo.png')
+
 ## Introduction
 
 Franklin Note is a web application designed to help users practice and improve their writing skills with a focus on sentence variety. This tool is perfect for writers, students, and anyone looking to enhance their writing abilities.
