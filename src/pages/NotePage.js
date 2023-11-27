@@ -10,7 +10,7 @@ import Modal from '../components/Modal';
 
 const NotePage = () => {
   const [notes, setNotes] = useState([
-    // TODO: get data from DB
+    // Default data
     {
       id: 1,
       sentence: 'She exercises every morning',
