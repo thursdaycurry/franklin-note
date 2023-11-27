@@ -1,7 +1,5 @@
 # Franklin Note
 
-![Franklin Note Logo](https://github.com/thursdaycurry/franklin-note/blob/main/public/images/logo.png)
-
 <img src="https://github.com/thursdaycurry/franklin-note/blob/main/public/images/logo.png" width="500">
 
 ## Introduction
